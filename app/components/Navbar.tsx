@@ -182,63 +182,99 @@ export default function Navbar() {
                     {/* MOBILE MENU */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="md:hidden text-xl"
+                        className="md:hidden relative w-10 h-10 flex items-center justify-center text-black"
                     >
-                        ☰
+                        <span
+                            className={`absolute text-3xl transition-all duration-300 ease-in-out
+        ${mobileOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100 text-black"}`}
+                        >
+                            ☰
+                        </span>
+
+                        <span
+                            className={`absolute text-3xl transition-all duration-300 ease-in-out
+        ${mobileOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75 text-black"}`}
+                        >
+                            ✕
+                        </span>
                     </button>
+
                 </div>
             </nav>
 
-            {/* ================= MOBILE SEARCH ================= */}
             {mobileOpen && (
-                <div className="md:hidden border-t border-gray-200 bg-white px-5 py-4">
-                    <input
-                        value={query}
-                        onChange={(e) => {
-                            setQuery(e.target.value);
-                            setShowDropdown(true);
-                        }}
-                        placeholder="Search products…"
-                        className="w-full px-4 py-2 rounded-md border border-gray-300 bg-white text-sm"
-                    />
+                <div className="md:hidden border-t border-gray-200 bg-white px-5 py-4 space-y-6">
 
-                    {showDropdown && (
-                        <div className="mt-2 bg-white border border-gray-200 rounded-md shadow">
-                            {!debouncedQuery &&
-                                TRENDING.map(item => (
-                                    <div
-                                        key={item.label}
-                                        onClick={() => {
-                                            router.push(item.path);
-                                            setMobileOpen(false);
-                                            setShowDropdown(false);
-                                        }}
-                                        className="px-4 py-2 text-sm hover:bg-gray-100"
-                                    >
-                                        {item.label}
-                                    </div>
-                                ))
-                            }
+                    {/* 🔍 MOBILE SEARCH (same behavior) */}
+                    <div className="relative" ref={dropdownRef}>
+                        <input
+                            value={query}
+                            onChange={(e) => {
+                                setQuery(e.target.value);
+                                setShowDropdown(true);
+                            }}
+                            onFocus={() => setShowDropdown(true)}
+                            placeholder="Search products, brands, categories…"
+                            className="w-full px-4 py-2 rounded-md border border-gray-300 text-sm text-black"
+                        />
 
-                            {debouncedQuery &&
-                                suggestions.map(p => (
-                                    <div
-                                        key={p.id}
-                                        onClick={() => {
-                                            router.push(`/product/${p.id}`);
-                                            setMobileOpen(false);
-                                            setShowDropdown(false);
-                                        }}
-                                        className="px-4 py-2 text-sm hover:bg-gray-100"
-                                    >
-                                        {p.name}
-                                    </div>
-                                ))
-                            }
-                        </div>
-                    )}
+                        {showDropdown && (
+                            <div className="absolute mt-2 w-full bg-black text-white rounded-md shadow-xl z-[9999] overflow-hidden">
+                                {!debouncedQuery && (
+                                    <>
+                                        <p className="px-4 py-2 text-xs font-semibold text-gray-400">
+                                            Trending Searches
+                                        </p>
+                                        {TRENDING.map(item => (
+                                            <div
+                                                key={item.label}
+                                                onClick={() => {
+                                                    router.push(item.path);
+                                                    setMobileOpen(false);
+                                                    setShowDropdown(false);
+                                                }}
+                                                className="px-4 py-2 text-sm hover:bg-gray-800"
+                                            >
+                                                {item.label}
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+
+                                {debouncedQuery &&
+                                    (suggestions.length === 0 ? (
+                                        <p className="px-4 py-3 text-sm text-gray-400">
+                                            No results found
+                                        </p>
+                                    ) : (
+                                        suggestions.map(p => (
+                                            <div
+                                                key={p.id}
+                                                onClick={() => {
+                                                    router.push(`/product/${p.id}`);
+                                                    setMobileOpen(false);
+                                                    setShowDropdown(false);
+                                                }}
+                                                className="px-4 py-2 text-sm hover:bg-gray-800"
+                                            >
+                                                {p.name}
+                                            </div>
+                                        ))
+                                    ))}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* 📌 MOBILE NAV LINKS */}
+                    <div className="flex flex-col gap-4 text-sm font-medium text-gray-700">
+                        <NavLink href="/" label="Home" />
+                        <NavLink href="/about" label="About" />
+                        <NavLink href="/help" label="Help" />
+                        <NavLink href="/support" label="Support" />
+                    </div>
                 </div>
             )}
+
         </header>
     );
 }
