@@ -1176,8 +1176,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "choker",
     price: 39200,
-    image: "/jewellery/c2.png",
-    images: ["/jewellery/c2.png"],
+    image: "/women/j19.2.png",
+    images: ["/women/j19.2.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald", "Pearl"],
     rating: 4.7,
@@ -1193,8 +1193,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "choker",
     price: 42500,
-    image: "/jewellery/c3.png",
-    images: ["/jewellery/c3.png"],
+    image: "/women/j19.4.png",
+    images: ["/women/j19.4.png"],
     material: "22K Gold",
     stones: ["Ruby", "Emerald"],
     rating: 4.8,
@@ -1212,8 +1212,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "earrings",
     price: 18400,
-    image: "/jewellery/e1.png",
-    images: ["/jewellery/e1.png"],
+    image: "/women/j19.3.png",
+    images: ["/women/j19.3.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald"],
     rating: 4.6,
@@ -1229,8 +1229,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "earrings",
     price: 21200,
-    image: "/jewellery/e2.png",
-    images: ["/jewellery/e2.png"],
+    image: "/women/j19.2.png",
+    images: ["/women/j19.2.png"],
     material: "22K Gold",
     stones: ["Pearl", "Ruby"],
     rating: 4.8,
@@ -1246,8 +1246,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "earrings",
     price: 23600,
-    image: "/jewellery/e3.png",
-    images: ["/jewellery/e3.png"],
+    image: "/women/j19.9.png",
+    images: ["/women/j19.11.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald", "Pearl"],
     rating: 4.9,
@@ -1265,8 +1265,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "necklace",
     price: 19800,
-    image: "/jewellery/p1.png",
-    images: ["/jewellery/p1.png"],
+    image: "/women/j19.12.png",
+    images: ["/women/j19.12.png"],
     material: "22K Gold",
     stones: ["Ruby", "Emerald"],
     rating: 4.6,
@@ -1282,8 +1282,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "necklace",
     price: 22400,
-    image: "/jewellery/p2.png",
-    images: ["/jewellery/p2.png"],
+    image: "/women/j19.13.png",
+    images: ["/women/j19.13.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald", "Pearl"],
     rating: 4.7,
@@ -1299,8 +1299,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "choker",
     price: 45200,
-    image: "/jewellery/c4.png",
-    images: ["/jewellery/c4.png"],
+    image: "/women/j19.14.png",
+    images: ["/women/j19.14.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald", "Pearl"],
     rating: 4.8,
@@ -1318,8 +1318,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "earrings",
     price: 17600,
-    image: "/jewellery/e4.png",
-    images: ["/jewellery/e4.png"],
+    image: "/women/j18.3.png",
+    images: ["/women/j18.3.png"],
     material: "22K Gold",
     stones: ["Ruby", "Emerald"],
     rating: 4.7,
@@ -1335,8 +1335,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 28400,
-    image: "/jewellery/b1.png",
-    images: ["/jewellery/b1.png"],
+    image: "/women/j19.21.png",
+    images: ["/women/j19.21.png"],
     material: "Kundan",
     stones: ["Pearl", "Ruby", "Emerald"],
     rating: 4.8,
@@ -1352,8 +1352,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 24600,
-    image: "/jewellery/b2.png",
-    images: ["/jewellery/b2.png"],
+    image: "/women/j19.22.png",
+    images: ["/women/j19.22.png"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald"],
     rating: 4.7,
@@ -1369,8 +1369,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 19800,
-    image: "/jewellery/b3.png",
-    images: ["/jewellery/b3.png"],
+    image: "/women/j19.23.png",
+    images: ["/women/j19.23.png"],
     material: "22K Gold",
     stones: ["Diamond"],
     rating: 4.6,
@@ -1386,8 +1386,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 4200,
-    image: "/jewellery/b4.png",
-    images: ["/jewellery/b4.png"],
+    image: "/women/j19.24.png",
+    images: ["/women/j19.24.png"],
     material: "Gold Plated",
     stones: ["Diamond"],
     rating: 4.4,
@@ -1403,8 +1403,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 22300,
-    image: "/jewellery/b5.png",
-    images: ["/jewellery/b5.png"],
+    image: "/women/j20.0.jpg",
+    images: ["/women/j20.0.jpg"],
     material: "Polki",
     stones: ["Diamond", "Ruby"],
     rating: 4.7,
@@ -1420,8 +1420,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 18900,
-    image: "/jewellery/b6.png",
-    images: ["/jewellery/b6.png"],
+    image: "/women/j20.1.jpg",
+    images: ["/women/j20.1.jpg"],
     material: "Antique Gold Finish",
     stones: ["Diamond", "Emerald"],
     rating: 4.6,
@@ -1437,8 +1437,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 21400,
-    image: "/jewellery/b7.png",
-    images: ["/jewellery/b7.png"],
+    image: "/women/j20.2.jpg",
+    images: ["/women/j20.2.jpg"],
     material: "Antique Gold Finish",
     stones: ["Ruby", "Emerald"],
     rating: 4.6,
@@ -1454,8 +1454,8 @@ export const products: Product[] = [
     subCategory: "jewellery",
     jewelleryType: "bangles",
     price: 23600,
-    image: "/jewellery/b8.png",
-    images: ["/jewellery/b8.png"],
+    image: "/women/j20.3.jpg",
+    images: ["/women/j20.3.jpg"],
     material: "Polki",
     stones: ["Diamond", "Ruby", "Emerald"],
     rating: 4.7,
@@ -1471,8 +1471,8 @@ export const products: Product[] = [
     category: "women",
     subCategory: "ethnic",
     price: 6499,
-    image: "/ethnic/ethnic1.jpeg",
-    images: ["/ethnic/ethnic1.jpeg"],
+    image: "/women/ethnic1.jpeg",
+    images: ["/women/ethnic1.jpeg"],
     material: "Georgette",
     colors: ["Black"],
     sizes: ["S", "M", "L", "XL"],
@@ -1488,8 +1488,8 @@ export const products: Product[] = [
     category: "women",
     subCategory: "ethnic",
     price: 3999,
-    image: "/ethnic/ethnic2.jpg",
-    images: ["/ethnic/ethnic2.jpg"],
+    image: "/women/ethnic2.jpg",
+    images: ["/women/ethnic2.jpg"],
     material: "Cotton Blend",
     colors: ["Peach"],
     sizes: ["S", "M", "L", "XL"],
@@ -1505,8 +1505,8 @@ export const products: Product[] = [
     category: "women",
     subCategory: "ethnic",
     price: 7299,
-    image: "/ethnic/ethnic3.jpeg",
-    images: ["/ethnic/ethnic3.jpeg"],
+    image: "/women/ethnic3.jpeg",
+    images: ["/women/ethnic3.jpeg"],
     material: "Silk Blend",
     colors: ["Wine"],
     sizes: ["S", "M", "L", "XL"],
@@ -1522,8 +1522,8 @@ export const products: Product[] = [
     category: "women",
     subCategory: "ethnic",
     price: 6899,
-    image: "/ethnic/ethnic4.jpeg",
-    images: ["/ethnic/ethnic4.jpeg"],
+    image: "/women/ethnic4.jpeg",
+    images: ["/women/ethnic4.jpeg"],
     material: "Net & Crepe",
     colors: ["Mauve"],
     sizes: ["S", "M", "L"],
@@ -1539,8 +1539,8 @@ export const products: Product[] = [
     category: "women",
     subCategory: "ethnic",
     price: 7599,
-    image: "/ethnic/ethnic5.jpeg",
-    images: ["/ethnic/ethnic5.jpeg"],
+    image: "/women/ethnic5.jpeg",
+    images: ["/women/ethnic5.jpeg"],
     material: "Organza & Silk",
     colors: ["Pastel Green"],
     sizes: ["S", "M", "L"],
@@ -1764,6 +1764,295 @@ export const products: Product[] = [
     images: ["/women/top11.jpeg"],
     description:
       "Mustard yellow short top with intricate embroidery and puff sleeves for a classy ethnic look.",
-  }
+  },
 
+
+  // footwear
+  {
+    id: 600,
+    name: "Black Suede Wedge Heels",
+    price: 3299,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Elegant black suede wedge heels with ankle strap. Ideal for party and evening wear.",
+
+    images: ["/women/footwear1.jpeg"],
+
+    colors: ["Black"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Synthetic",
+
+    rating: 4.6,
+    reviews: 92
+  },
+
+  {
+    id: 601,
+    name: "Minimal Black Block Heel Sandals",
+    price: 2799,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Minimal black block heel sandals with cushioned sole and adjustable ankle buckle.",
+
+    images: ["/women/footwear2.jpeg"],
+
+    colors: ["Black"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Synthetic",
+
+    rating: 4.4,
+    reviews: 68
+  },
+
+  {
+    id: 602,
+    name: "Matte Black Platform Wedges",
+    price: 3899,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Stylish matte black platform wedges offering height with all-day comfort.",
+
+    images: ["/women/footwear3.jpeg"],
+
+    colors: ["Black"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Rubber",
+
+    rating: 4.7,
+    reviews: 104
+  },
+
+  {
+    id: 603,
+    name: "White Chunky Heel Platform Sandals",
+    price: 3499,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Trendy white chunky heel sandals with modern platform design.",
+
+    images: ["/women/footwear4.jpeg"],
+
+    colors: ["White"],
+    sizes: ["36", "37", "38", "39"],
+
+    material: "Synthetic",
+
+    rating: 4.5,
+    reviews: 81
+  },
+
+  {
+    id: 604,
+    name: "Maroon Party Block Heels",
+    price: 3199,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Premium maroon block heels with ankle strap, perfect for festive occasions.",
+
+    images: ["/women/footwear5.jpeg"],
+
+    colors: ["Maroon"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Synthetic",
+
+    rating: 4.8,
+    reviews: 137
+  },
+
+  {
+    id: 605,
+    name: "Classic Black Criss-Cross Heels",
+    price: 2999,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Classic black criss-cross strap heels with stable block heel.",
+
+    images: ["/women/footwear6.jpeg"],
+
+    colors: ["Black"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Synthetic",
+
+    rating: 4.6,
+    reviews: 89
+  },
+
+  {
+    id: 606,
+    name: "White Textured Platform Heels",
+    price: 3699,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Textured white platform heels with adjustable ankle strap and soft footbed.",
+
+    images: ["/women/footwear7.jpeg"],
+
+    colors: ["White"],
+    sizes: ["36", "37", "38", "39"],
+
+    material: "Rubber",
+
+    rating: 4.5,
+    reviews: 73
+  },
+
+  {
+    id: 607,
+    name: "Black Casual Block Heel Sandals",
+    price: 2599,
+
+    category: "women",
+    subCategory: "Footwear",
+
+    description:
+      "Casual black block heel sandals suitable for office and daily wear.",
+
+    images: ["/women/footwear8.jpeg"],
+
+    colors: ["Black"],
+    sizes: ["36", "37", "38", "39", "40"],
+
+    material: "Synthetic",
+
+    rating: 4.3,
+    reviews: 61
+  },
+
+  // dress
+
+  {
+    id: 609,
+    name: "Pastel Sheer Long Dress with Belt",
+    price: 11499,
+
+    category: "women",
+    subCategory: "Dress",
+
+    description:
+      "Soft pastel sheer long dress with elegant waist belt. Ideal for parties and premium occasions.",
+
+    images: ["/women/dress2.jpeg"],
+
+    colors: ["Peach", "Beige"],
+    sizes: ["S", "M", "L"],
+
+    material: "Chiffon",
+
+    rating: 4.7,
+    reviews: 121
+  },
+
+  {
+    id: 610,
+    name: "Embroidered Layered Indo-Western Dress",
+    price: 10499,
+
+    category: "women",
+    subCategory: "Dress",
+
+    description:
+      "Beautiful layered indo-western dress with embroidery and inner contrast dress.",
+
+    images: ["/women/dress3.jpeg"],
+
+    colors: ["Blush Pink", "Wine"],
+    sizes: ["S", "M", "L", "XL"],
+
+    material: "Net & Crepe",
+
+    rating: 4.6,
+    reviews: 98
+  },
+
+  {
+    id: 611,
+    name: "Elegant Mauve Straight Dress Set",
+    price: 8999,
+
+    category: "women",
+    subCategory: "Dress",
+
+    description:
+      "Elegant mauve straight-fit dress with sheer overlay and minimal embroidery.",
+
+    images: ["/women/dress4.jpeg"],
+
+    colors: ["Mauve"],
+    sizes: ["S", "M", "L", "XL"],
+
+    material: "Georgette",
+
+    rating: 4.5,
+    reviews: 84
+  },
+
+  {
+    id: 612,
+    name: "Printed Anarkali Style Dress",
+    price: 9799,
+
+    category: "women",
+    subCategory: "Dress",
+
+    description:
+      "Traditional printed anarkali style dress with matching dupatta and flowy silhouette.",
+
+    images: ["/women/dress5.jpeg"],
+
+    colors: ["Brown", "Maroon"],
+    sizes: ["S", "M", "L", "XL"],
+
+    material: "Cotton Blend",
+
+    rating: 4.6,
+    reviews: 110
+  },
+
+  {
+    id: 613,
+    name: "Floral Party Wear Ball Gown",
+    price: 14999,
+
+    category: "women",
+    subCategory: "Dress",
+
+    description:
+      "Premium floral party wear ball gown with fitted bodice and dramatic flare.",
+
+    images: ["/women/dress6.jpeg"],
+
+    colors: ["Multicolor"],
+    sizes: ["S", "M", "L"],
+
+    material: "Organza",
+
+    rating: 4.9,
+    reviews: 189
+  }
 ];

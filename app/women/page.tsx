@@ -8,7 +8,8 @@ import { useState, useMemo } from "react";
 /* ================= FILTER MAP ================= */
 
 const WOMEN_FILTERS: Record<string, (p: any) => boolean> = {
-    All: (p) => p.category === "women" || p.category === "women-jewellery",
+    All: (p) =>
+        p.category === "women",
 
     Kurti: (p) =>
         p.category === "women" &&
@@ -30,7 +31,9 @@ const WOMEN_FILTERS: Record<string, (p: any) => boolean> = {
         p.category === "women" &&
         p.subCategory?.toLowerCase() === "footwear",
 
-    Jewellery: (p) => p.category === "women-jewellery",
+    Jewellery: (p) =>
+        p.category === "women" &&
+        p.subCategory?.toLowerCase() === "jewellery",
 };
 
 export default function WomenPage() {
