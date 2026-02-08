@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
@@ -22,19 +23,30 @@ export default function ShoesClient() {
     const [priceRange, setPriceRange] = useState(priceParam);
     const [sort, setSort] = useState(sortParam);
 
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    /* ================= LOAD PRODUCTS ================= */
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
+
     /* ================= SHOES FILTER (OPTIMIZED) ================= */
 
     const filteredProducts = useMemo(() => {
-        let data = products.filter(p => p.category === "shoes");
+        let data = allProducts.filter((p) => p.category === "shoes");
 
         if (activeType !== "All") {
             const type = activeType.toLowerCase();
-            data = data.filter(p =>
+            data = data.filter((p) =>
                 p.name.toLowerCase().includes(type)
             );
         }
 
-        data = data.filter(p => p.price <= priceRange);
+        data = data.filter((p) => p.price <= priceRange);
 
         if (sort === "low") {
             data = [...data].sort((a, b) => a.price - b.price);
@@ -45,13 +57,13 @@ export default function ShoesClient() {
         }
 
         return data;
-    }, [activeType, priceRange, sort]);
+    }, [activeType, priceRange, sort, allProducts]);
 
     /* ================= SANDALS (MEMOIZED) ================= */
 
     const sandalsProducts = useMemo(
-        () => products.filter(p => p.category === "sandals"),
-        []
+        () => allProducts.filter((p) => p.category === "sandals"),
+        [allProducts]
     );
 
     /* ================= URL SYNC ================= */

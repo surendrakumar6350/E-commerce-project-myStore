@@ -1,7 +1,8 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import { useEffect, useMemo, useState } from "react";
 
@@ -32,13 +33,23 @@ export default function SearchClient() {
         setDebouncedQuery(initialQuery);
     }, [initialQuery]);
 
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
+
     /* ================= FILTER PRODUCTS ================= */
     const results = useMemo(() => {
         const q = debouncedQuery.trim().toLowerCase();
 
         if (!q && category === "all") return [];
 
-        return products.filter((p) => {
+        return allProducts.filter((p) => {
             const matchName = q
                 ? p.name.toLowerCase().includes(q)
                 : true;
@@ -48,7 +59,7 @@ export default function SearchClient() {
 
             return matchName && matchCategory;
         });
-    }, [debouncedQuery, category]);
+    }, [debouncedQuery, category, allProducts]);
 
     return (
         <main className="min-h-screen bg-[#f6f7f9] text-gray-900">

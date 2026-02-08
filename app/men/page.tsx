@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { products } from "@/data/products";
+import { useState, useMemo, useEffect } from "react";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
+
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
@@ -18,17 +20,26 @@ const MEN_FILTERS: Record<string, string[]> = {
 
 export default function MenPage() {
     const [activeFilter, setActiveFilter] = useState("All");
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
 
     /* ================= FILTERED PRODUCTS (OPTIMIZED) ================= */
 
     const menProducts = useMemo(() => {
-        return products.filter(p => {
+        return allProducts.filter((p) => {
             if (p.category !== "men") return false;
             if (activeFilter === "All") return true;
 
             return MEN_FILTERS[activeFilter]?.includes(p.subCategory);
         });
-    }, [activeFilter]);
+    }, [activeFilter, allProducts]);
 
     return (
         <main className="bg-gray-50 text-gray-900">

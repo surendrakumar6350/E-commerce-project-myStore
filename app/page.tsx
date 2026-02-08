@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
-
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 
 /* ======================================================================
@@ -62,6 +62,7 @@ const heroSlides = [
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   /* ================= HERO AUTO SLIDE ================= */
 
@@ -76,18 +77,27 @@ export default function HomePage() {
   const slide = heroSlides[currentSlide];
 
   /* ================= FEATURED PRODUCTS LOGIC ================= */
+  useEffect(() => {
+    let mounted = true;
+    void getProducts().then((data) => {
+      if (mounted) setAllProducts(data ?? []);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const featuredProducts = useMemo(() => {
     const categories = Array.from(
-      new Set(products.map(p => p.category))
+      new Set(allProducts.map((p) => p.category))
     );
 
-    const mixed = categories.flatMap(category =>
-      products.filter(p => p.category === category).slice(0, 4)
+    const mixed = categories.flatMap((category) =>
+      allProducts.filter((p) => p.category === category).slice(0, 4)
     );
 
     return mixed.slice(0, 20);
-  }, []);
+  }, [allProducts]);
 
   /* ================= FEATURED AUTO SCROLL ================= */
 
@@ -253,7 +263,7 @@ export default function HomePage() {
                 key={product.id}
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.2 }}
-                className="min-w-[220px] sm:min-w-[260px]"
+                className="w-[220px] sm:w-[260px] h-[520px] md:h-[560px] flex-none"
               >
                 <ProductCard product={product} />
               </motion.div>

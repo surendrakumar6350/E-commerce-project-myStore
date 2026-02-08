@@ -1,9 +1,10 @@
 "use client";
 
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 /* ================= FILTER MAP ================= */
 
@@ -38,13 +39,22 @@ const WOMEN_FILTERS: Record<string, (p: any) => boolean> = {
 
 export default function WomenPage() {
     const [activeFilter, setActiveFilter] = useState("All");
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
 
     /* ================= FILTERED PRODUCTS (FIXED + FAST) ================= */
 
     const womenProducts = useMemo(() => {
         const filterFn = WOMEN_FILTERS[activeFilter];
-        return products.filter(filterFn);
-    }, [activeFilter]);
+        return allProducts.filter(filterFn as any);
+    }, [activeFilter, allProducts]);
 
     return (
         <main className="relative bg-[#f6f7f9] text-gray-900">

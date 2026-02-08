@@ -36,26 +36,20 @@ export default function ProductCard({ product }: Props) {
                 transition
                 hover:shadow-xl
                 hover:border-gray-300
+                h-full
             "
         >
             {/* ================= IMAGE (✅ NOW CLICKABLE) ================= */}
             <Link href={`/product/${product.id}`} className="block">
-                <div className="relative w-full aspect-[3/4] bg-gray-100 overflow-hidden">
+                <div className="relative w-full bg-gray-100 overflow-hidden flex-shrink-0 h-48 sm:h-56 md:h-60">
                     <Image
                         src={imageSrc}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 640px) 50vw,
-                               (max-width: 1024px) 33vw,
-                               25vw"
-                        className="
-                            object-cover
-                            object-center
-                            transition-transform duration-300
-                            group-hover:scale-105
-                        "
-                        loading="lazy"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                         priority={false}
+                        loading="lazy"
                     />
                 </div>
             </Link>
@@ -110,7 +104,7 @@ export default function ProductCard({ product }: Props) {
                         });
                     }}
                     className="
-                        mt-auto
+                        mt-3 sm:mt-4
                         w-full py-2
                         bg-black text-white
                         rounded-md

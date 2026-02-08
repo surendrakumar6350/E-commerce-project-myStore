@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import { useEffect, useState, useRef } from "react";
 
 /* ================= TRENDING ================= */
@@ -24,6 +25,7 @@ export default function Navbar() {
 
     const [query, setQuery] = useState("");
     const [debouncedQuery, setDebouncedQuery] = useState("");
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
     const [showDropdown, setShowDropdown] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -34,6 +36,16 @@ export default function Navbar() {
         const t = setTimeout(() => setDebouncedQuery(query), 300);
         return () => clearTimeout(t);
     }, [query]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => {
+            mounted = false;
+        };
+    }, []);
 
     /* ================= OUTSIDE CLICK ================= */
     useEffect(() => {
@@ -53,7 +65,7 @@ export default function Navbar() {
 
     /* ================= LIVE SUGGESTIONS ================= */
     const suggestions = debouncedQuery
-        ? products
+        ? allProducts
             .filter(p =>
                 p.name.toLowerCase().includes(debouncedQuery.toLowerCase())
             )

@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { products } from "@/data/products";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
@@ -31,17 +32,27 @@ export default function WatchesClient() {
         searchParams.get("sort") || "none"
     );
 
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
+
     /* ================= FILTERED PRODUCTS (FAST) ================= */
 
     const filteredProducts = useMemo(() => {
-        let data = products.filter(p => p.category === "watches");
+        let data = allProducts.filter((p) => p.category === "watches");
 
         if (activeType !== "All") {
             const typeValue = WATCH_FILTERS[activeType];
-            data = data.filter(p => p.watchType === typeValue);
+            data = data.filter((p) => p.watchType === typeValue);
         }
 
-        data = data.filter(p => p.price <= priceRange);
+        data = data.filter((p) => p.price <= priceRange);
 
         if (sort === "low") {
             data = [...data].sort((a, b) => a.price - b.price);
@@ -51,7 +62,7 @@ export default function WatchesClient() {
         }
 
         return data;
-    }, [activeType, priceRange, sort]);
+    }, [activeType, priceRange, sort, allProducts]);
 
     /* ================= URL SYNC (NO DELAY) ================= */
 

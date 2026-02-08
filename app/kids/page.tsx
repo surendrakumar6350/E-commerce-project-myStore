@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { products } from "@/data/products";
+import { useState, useMemo, useEffect } from "react";
+import { getProducts } from "@/data/products";
+import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
 
@@ -15,10 +16,20 @@ type KidsFilter =
 export default function KidsPage() {
     const [filter, setFilter] = useState<KidsFilter>("all");
 
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        let mounted = true;
+        void getProducts().then((data) => {
+            if (mounted) setAllProducts(data ?? []);
+        });
+        return () => { mounted = false; };
+    }, []);
+
     /* ================= BASE KIDS PRODUCTS ================= */
     const kidsProducts = useMemo(() => {
-        return products.filter(p => p.category === "kids");
-    }, []);
+        return allProducts.filter((p) => p.category === "kids");
+    }, [allProducts]);
 
     /* ================= CORRECT + STRICT SEPARATION =================
        RULE (FINAL, NO CONFUSION):
