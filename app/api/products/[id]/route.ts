@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectDb } from "../../../../dbConnection/connect";
 import { ProductModel } from "../../../../models/Product";
-import mongoose, { Types } from "mongoose";
+import { Types } from "mongoose";
 
 function buildFilter(idParam: string) {
   const numericId = Number(idParam);
@@ -15,10 +15,14 @@ function buildFilter(idParam: string) {
   return null;
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
     const body = await req.json();
-    let filter = buildFilter(params.id);
+    const { id } = await params;
+    let filter = buildFilter(id);
     if (!filter) {
       // Fallback: accept id from payload
       if (body?.id !== undefined) {
@@ -34,10 +38,16 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     await connectDb();
 
     const update: Record<string, unknown> = {};
-    const allowed = ["name", "price", "category", "description", "image", "images", "rating", "reviews"];
+    const allowed = ["name", "price", "category", "subCategory", "description", "image", "images", "sizes", "rating", "reviews"];
     for (const key of allowed) {
       if (body[key] !== undefined) {
-        update[key] = key === "images" && Array.isArray(body.images) ? body.images.map(String) : body[key];
+        if (key === "images" && Array.isArray(body.images)) {
+          update[key] = body.images.map(String);
+        } else if (key === "sizes" && Array.isArray(body.sizes)) {
+          update[key] = body.sizes.map(String);
+        } else {
+          update[key] = body[key];
+        }
       }
     }
 
@@ -57,9 +67,13 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
   try {
-    let filter = buildFilter(params.id);
+    const { id } = await params;
+    let filter = buildFilter(id);
     if (!filter) {
       // Attempt to read id from payload
       try {

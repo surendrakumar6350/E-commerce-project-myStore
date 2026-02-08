@@ -30,12 +30,18 @@ export async function POST(req: Request) {
       name: String(body.name),
       price: Number(body.price),
       category: String(body.category),
+      subCategory: body.subCategory !== undefined && body.subCategory !== null && String(body.subCategory).trim() !== ""
+        ? String(body.subCategory)
+        : undefined,
       description: String(body.description),
       image: String(body.image),
       images: Array.isArray(body.images) ? body.images.map(String) : [],
+      sizes: Array.isArray(body.sizes) ? body.sizes.map(String) : [],
       rating: body.rating !== undefined ? Number(body.rating) : 0,
       reviews: body.reviews !== undefined ? Number(body.reviews) : 0,
     };
+
+    console.log(payload)
 
     const created = await ProductModel.create(payload);
     return NextResponse.json({ product: created }, { status: 201 });

@@ -12,9 +12,11 @@ export interface Product {
   name: string;
   price: number;
   category: string;
+  subCategory?: string;
   description: string;
   image: string;
   images: string[];
+  sizes?: string[];
   rating: number;
   reviews: number;
 }
@@ -83,9 +85,11 @@ export default function AdminPage() {
         name: updatedProduct.name,
         price: updatedProduct.price,
         category: updatedProduct.category,
+        subCategory: updatedProduct.subCategory,
         description: updatedProduct.description,
         image: updatedProduct.image,
         images: updatedProduct.images,
+        sizes: updatedProduct.sizes,
         rating: updatedProduct.rating,
         reviews: updatedProduct.reviews,
       })

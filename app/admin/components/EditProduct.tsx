@@ -14,12 +14,16 @@ export function EditProduct({ product, onUpdate, onCancel }: EditProductProps) {
     name: '',
     price: 0,
     category: '',
+    subCategory: '',
     description: '',
     image: '',
     images: [''],
+    sizes: [] as string[],
     rating: 4.0,
     reviews: 0
   });
+
+  const [sizesInput, setSizesInput] = useState('');
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -30,12 +34,15 @@ export function EditProduct({ product, onUpdate, onCancel }: EditProductProps) {
       name: product.name,
       price: product.price,
       category: product.category,
+      subCategory: product.subCategory ?? '',
       description: product.description,
       image: product.image,
       images: product.images.length > 0 ? product.images : [''],
+      sizes: Array.isArray(product.sizes) ? product.sizes : [],
       rating: product.rating,
       reviews: product.reviews
     });
+    setSizesInput(Array.isArray(product.sizes) ? product.sizes.join(', ') : '');
   }, [product]);
 
   const validateForm = () => {
@@ -60,7 +67,9 @@ export function EditProduct({ product, onUpdate, onCancel }: EditProductProps) {
       const updatedProduct: Product = {
         ...formData,
         id: product.id,
-        images: formData.images.filter(img => img.trim() !== '')
+        images: formData.images.filter(img => img.trim() !== ''),
+        subCategory: formData.subCategory?.trim() ? formData.subCategory.trim() : undefined,
+        sizes: Array.isArray(formData.sizes) ? formData.sizes.filter(s => s && s.trim() !== '').map(s => s.trim()) : []
       };
       onUpdate(updatedProduct);
     }
@@ -135,6 +144,19 @@ export function EditProduct({ product, onUpdate, onCancel }: EditProductProps) {
             </select>
             {errors.category && <p className="text-red-600 text-sm mt-1">{errors.category}</p>}
           </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Subcategory (optional)
+            </label>
+            <input
+              type="text"
+              value={formData.subCategory}
+              onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="e.g. shirts, tshirts"
+            />
+          </div>
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -148,6 +170,26 @@ export function EditProduct({ product, onUpdate, onCancel }: EditProductProps) {
               placeholder="https://example.com/image.jpg"
             />
             {errors.image && <p className="text-red-600 text-sm mt-1">{errors.image}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Sizes (optional, comma-separated)
+            </label>
+            <input
+              type="text"
+              value={sizesInput}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSizesInput(val);
+                setFormData({
+                  ...formData,
+                  sizes: val.split(',').map(s => s.trim()).filter(Boolean)
+                });
+              }}
+              className="w-full px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="e.g. S, M, L, XL"
+            />
           </div>
           
           <div>

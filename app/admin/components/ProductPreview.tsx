@@ -132,6 +132,11 @@ export function ProductPreview({ product, onClose }: ProductPreviewProps) {
               <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full capitalize">
                 {product.category}
               </span>
+              {product.subCategory && (
+                <span className="inline-block ml-2 px-3 py-1 bg-purple-100 text-purple-800 text-sm font-medium rounded-full capitalize">
+                  {product.subCategory}
+                </span>
+              )}
             </div>
             
             <h1 className="text-3xl font-bold text-gray-900">
@@ -175,6 +180,12 @@ export function ProductPreview({ product, onClose }: ProductPreviewProps) {
               <div className="text-sm text-gray-600 space-y-1">
                 <div>Product ID: #{product.id}</div>
                 <div>Category: <span className="capitalize">{product.category}</span></div>
+                {product.subCategory && (
+                  <div>Subcategory: <span className="capitalize">{product.subCategory}</span></div>
+                )}
+                {Array.isArray(product.sizes) && product.sizes.length > 0 && (
+                  <div>Sizes: {product.sizes.join(', ')}</div>
+                )}
                 <div>Average Rating: {product.rating}/5</div>
                 <div>Total Reviews: {product.reviews.toLocaleString()}</div>
                 <div>Total Images: {images.length}</div>
